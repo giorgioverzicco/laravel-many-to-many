@@ -20,8 +20,8 @@
                             @method('POST')
 
                             <div class="form-group">
-                                <label for="post-name">Name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="post-name" name="name" value="{{ old('name') }}">
+                                <label for="category-name">Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="category-name" name="name" value="{{ old('name') }}">
                                 @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
