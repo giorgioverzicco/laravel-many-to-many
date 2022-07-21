@@ -12,6 +12,13 @@
                                 <span class="badge badge-primary">{{ $post->category->name }}</span>
                             </div>
                         @endif
+                        @if(count($post->tags) > 0)
+                            <div class="d-inline-flex mt-1">
+                                @foreach($post->tags as $tag)
+                                    <span class="badge badge-secondary mr-1">#{{ $tag->name }}</span>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
 
                     <div class="card-body">

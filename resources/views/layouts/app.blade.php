@@ -50,6 +50,11 @@
                                     {{ __('Categories') }}
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.tags.index') }}">
+                                    {{ __('Tags') }}
+                                </a>
+                            </li>
                         @endguest
                     </ul>
 

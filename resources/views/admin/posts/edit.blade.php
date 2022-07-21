@@ -32,7 +32,7 @@
                                 <select class="form-control @error('category_id') is-invalid @enderror" id="post-category-id" name="category_id">
                                     <option value="">Select any category</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" {{ old('category_id', $category->id) ? 'selected' : '' }}>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('category_id')
@@ -44,6 +44,20 @@
                                 <label for="post-content">Content</label>
                                 <textarea class="form-control @error('content') is-invalid @enderror" id="post-content" name="content" rows="3">{{ old('content', $post->content) }}</textarea>
                                 @error('content')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <p>Tags</p>
+
+                                @foreach ($tags as $tag)
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="{{ $tag->slug }}" value="{{ $tag->id }}" name="tags[]" {{ in_array($tag->id, old('tags', $postTags)) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="{{ $tag->slug }}">{{ $tag->name }}</label>
+                                    </div>
+                                @endforeach
+                                @error('tags')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
